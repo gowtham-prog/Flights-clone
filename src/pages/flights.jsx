@@ -156,24 +156,27 @@ export default function Flights() {
 
                     <div className="w-full relative max-w-4xl shadow-dialogueShadow bg-white dark:bg-[#36373a] dark:text-white rounded-2xl p-6 lg:p-10">
 
-                        <div className="flex md:w-2/3 w-full justify-between items-start gap-6">
+                        <div className="flex-1 w-full md:w-2/3 justify-between items-start gap-6">
                             <Dropdown
                                 label="Trip type"
                                 options={tripOptions}
                                 value={tripType}
                                 onChange={setTripType}
+                                type="trip"
                             />
                             <TravellerDropdown
-                                label="Travelers"
+                                label={<span className="hidden md:inline">Travelers</span>}
                                 options={travellerOptions}
                                 value={travelers}
                                 onChange={setTravelers}
+                                type="travelers"
                             />
                             <Dropdown
                                 label="Class"
                                 options={classOptions}
                                 value={flightClass}
                                 onChange={setFlightClass}
+                                type="class"
                             />
                         </div>
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { FaUsers } from 'react-icons/fa';
 
 const TravellerDropdown = ({ label, options, value, onChange }) => {
     const dropdownRef = useRef(null);
@@ -46,12 +47,17 @@ const TravellerDropdown = ({ label, options, value, onChange }) => {
             <button
                 className="mt-1 p-2 block w-fit rounded-lg outline-none 
                     dark:text-[#aeb1b6] dark:bg-[#36373a] 
-                    border-gray-300 shadow-sm focus:bg-blue-500
-                    dark:focus:bg-[#4c5667] focus:border-2 focus:border-b focus:border-blue-200 
+                    border-gray-300 shadow-sm 
+                    dark:focus:bg-[#4c5667] focus:border-2 focus:border-b focus:border-blue-500 
                     hover:shadow-lg transition-all duration-300 ease-in-out"
                 onClick={() => setIsOpen((prev) => !prev)}
             >
-                {label}
+                <span className="md:hidden">
+                    <FaUsers className="w-4 h-4" />
+                </span>
+                <span className="hidden md:inline">
+                    {label}
+                </span>
             </button>
 
             {/* Dropdown content */}

@@ -1,14 +1,29 @@
 import React from "react";
+import { FaChair, FaPlane, FaUsers } from 'react-icons/fa'; // Import icons
 
-const Dropdown = ({ label, options, value, onChange }) => {
+const Dropdown = ({ label, options, value, onChange, type }) => {
     const selectedOption = options.find((option) => option.value === value);
 
+    // Function to get icon based on dropdown type
+    const getIcon = () => {
+        switch (type) {
+            case 'trip':
+                return <FaPlane className="w-4 h-4" />;
+            case 'travelers':
+                return <FaUsers className="w-4 h-4" />;
+            case 'class':
+                return <FaChair className="w-4 h-4" />;
+            default:
+                return null;
+        }
+    };
+
     return (
-        <div className="relative flex flex-row">
+        // <div className="relative flex flex-row">
             <select
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                className="mt-1 p-2 block w-fit rounded-lg outline-none 
+                className="mt-1 p-2 flex w-fit rounded-lg outline-none 
                     bg-white dark:bg-[#36373a] 
                     text-gray-800 dark:text-[#aeb1b6] 
                     border border-gray-300 dark:border-gray-600
@@ -33,11 +48,16 @@ const Dropdown = ({ label, options, value, onChange }) => {
                         key={option.key}
                         value={option.key}
                     >
-                        {option.value}
+                        <span className="md:hidden flex items-center">
+                            {getIcon()}
+                        </span>
+                        <span className="hidden md:inline">
+                            {option.value}
+                        </span>
                     </option>
                 ))}
             </select>
-        </div>
+        // {/* </div> */}
     );
 };
 
